@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MPA Alumni Placement & Engagement Survey</title>
+  <style>
+    :root {
+      --bg: #0f172a; /* slate-900 */
+      --card: #111827; /* gray-900 */
+      --text: #e5e7eb; /* gray-200 */
+      --muted: #9ca3af; /* gray-400 */
+      --brand: #2563eb; /* blue-600 */
+      --brand-2: #0ea5e9; /* sky-500 */
+      --good: #10b981; /* emerald-500 */
+      --warn: #f59e0b; /* amber-500 */
+      --bad: #ef4444; /* red-500 */
+      --border: #1f2937; /* gray-800 */
+      --focus: #38bdf8; /* sky-400 */
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, #0b1220, var(--bg));
+      color: var(--text);
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 6rem; }
+    header { margin-bottom: 1.25rem; }
+    h1 { font-size: clamp(1.6rem, 2.2vw + 1rem, 2.4rem); margin: 0 0 .25rem; letter-spacing: .2px; }
+    .sub { color: var(--muted); font-size: .975rem; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); border-radius: 14px; padding: 1.25rem; }
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 720px){ .grid-2 { grid-template-columns: 1fr 1fr; } }
+    fieldset { border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    legend { padding: 0 .5rem; color: var(--muted); font-weight: 600; }
+    label { display: block; font-weight: 600; margin-bottom: .35rem; }
+    .req { color: var(--warn); font-weight: 700; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], select, textarea, input[type="date"] {
+      width: 100%; padding: .7rem .8rem; border-radius: 10px; border: 1px solid var(--border); background: #0b1020; color: var(--text);
+    }
+    textarea { min-height: 110px; }
+    .hint { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
+    .row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+    .chip { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .6rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+    .divider { height: 1px; background: var(--border); margin: .75rem 0 1rem; border-radius: 999px; }
+    .notes { font-size: .9rem; color: var(--muted); }
+    .actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
+    button, .btn {
+      background: linear-gradient(180deg, var(--brand), var(--brand-2));
+      color: white; border: none; border-radius: 12px; padding: .75rem 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(37,99,235,.35);
+    }
+    button.secondary { background: #0b1020; border: 1px solid var(--border); color: var(--text); box-shadow: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .error { color: var(--bad); font-size: .9rem; }
+    .success { color: var(--good); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>CSUF MPA Alumni Placement & Engagement Survey</h1>
+      <p class="sub">5–7 minutes. This helps us report required NASPAA outcomes and build a stronger alumni network. Items marked <span class="req" aria-hidden="true">*</span> are required.</p>
+    </header>
+
+    <!--
+      Submission wiring options:
+      - Netlify Forms: keep data-netlify="true" and include the hidden input name="form-name".
+      - Formspree: add action="https://formspree.io/f/XXXXXXXX" method="POST".
+      - Google Apps Script/Webhook: set action to your endpoint and ensure it accepts form-encoded data.
+    -->
+
+    <form class="card grid" name="MPA Alumni Placement & Engagement" action="https://formspree.io/f/xqagkgdj" method="POST" id="alumniForm">      $1
+      <input type="hidden" name="_subject" value="New MPA Alumni Survey submission" />
+
+      <fieldset class="grid grid-2">
+        <legend>About You</legend>
+        <p class="sr-only" id="about-desc">Contact details and consent. We won't share without your permission.</p>
+        <div>
+          <label for="name">Full name (optional)</label>
+          <input id="name" name="name" type="text" autocomplete="name" />
+        </div>
+        <div>
+          <label for="email">Preferred email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+          <div class="hint">We'll use this for alumni updates and (optionally) mentorship.</div>
+        </div>
+        <div>
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
+        <div>
+          <label for="linkedin">LinkedIn (optional)</label>
+          <input id="linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/…" />
+        </div>
+        <div class="grid-2" style="grid-column: 1 / -1; display:grid; gap:1rem; grid-template-columns: 1fr 1fr;">
+          <div>
+            <label for="share_dir">Include me in an alumni directory</label>
+            <select id="share_dir" name="share_directory">
+              <option value="no">No</option>
+              <option value="yes">Yes — share name, email, LinkedIn with MPA alumni/students</option>
+            </select>
+          </div>
+          <div>
+            <label for="newsletter">Titan PA newsletter</label>
+            <select id="newsletter" name="newsletter_optin">
+              <option value="yes">Yes, subscribe me</option>
+              <option value="no">No, thanks</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grid grid-2">
+        <legend>Graduation Details</legend>
+        <div>
+          <label for="grad_term">Graduation term <span class="req">*</span></label>
+          <select id="grad_term" name="grad_term" required>
+            <option value="">Select…</option>
+            <option>Fall 2024</option>
+            <option>Spring 2025</option>
+            <option>Summer 2025</option>
+            <option>Fall 2025</option>
+            <option>Spring 2026</option>
+            <option>Other/Earlier</option>
+          </select>
+        </div>
+        <div>
+          <label for="grad_date">Graduation date (approximate is fine)</label>
+          <input id="grad_date" name="grad_date" type="date" />
+        </div>
+        <div>
+          <label for="campus">Campus</label>
+          <select id="campus" name="campus">
+            <option value="Fullerton">Fullerton (Main Campus)</option>
+            <option value="Irvine Center">Irvine Center</option>
+            <option value="Online">Online</option>
+            <option value="Hybrid">Hybrid/HyFlex</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="modality">Delivery modality (for NASPAA breakdown) <span class="req">*</span></label>
+          <select id="modality" name="modality" required>
+            <option value="">Select…</option>
+            <option>On-Campus</option>
+            <option>Online</option>
+            <option>Hybrid/HyFlex</option>
+          </select>
+          <div class="hint">Programs with multiple campuses/modalities must report by modality; we’ll aggregate.</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Employment within 6 months of graduation (NASPAA)</legend>
+        <p class="notes">NASPAA requires sector-level reporting for <strong>employment in the profession within six months</strong> of graduation. Choose the one category that best fits your status within six months of your graduation date.</p>
+        <div class="divider"></div>
+        <div role="radiogroup" aria-labelledby="status-label" class="grid">
+          <span id="status-label" class="sr-only">Employment status within 6 months</span>
+
+          <label class="chip"><input type="radio" name="naspaa_status" value="employed" required /> Employed in the profession</label>
+          <label class="chip"><input type="radio" name="naspaa_status" value="edu" /> Obtaining further education</label>
+          <label class="chip"><input type="radio" name="naspaa_status" value="military" /> Military service</label>
+          <label class="chip"><input type="radio" name="naspaa_status" value="unemp_seeking" /> Unemployed (seeking)</label>
+          <label class="chip"><input type="radio" name="naspaa_status" value="unemp_not_seeking" /> Unemployed (not seeking)</label>
+        </div>
+
+        <!-- Sector (shown only if employed) -->
+        <div id="sectorBlock" style="margin-top:1rem; display:none;">
+          <label for="naspaa_sector">Employment sector (choose one) <span class="req">*</span></label>
+          <select id="naspaa_sector" name="naspaa_sector">
+            <option value="">Select…</option>
+            <option>National or central government (same country)</option>
+            <option>State/provincial/regional government (same country)</option>
+            <option>City/County/Local government (same country)</option>
+            <option>Government (outside country) or international quasi-governmental</option>
+            <option>Nonprofit (domestic-oriented)</option>
+            <option>Nonprofit/NGO (internationally-oriented)</option>
+            <option>Private sector — Research/Consulting</option>
+            <option>Private sector — Not research/consulting</option>
+          </select>
+          <div class="grid grid-2" style="margin-top:.75rem;">
+            <div>
+              <label for="employer">Employer</label>
+              <input id="employer" name="employer" type="text" />
+            </div>
+            <div>
+              <label for="title">Job title</label>
+              <input id="title" name="title" type="text" />
+            </div>
+            <div>
+              <label for="work_city">Work city</label>
+              <input id="work_city" name="work_city" type="text" />
+            </div>
+            <div>
+              <label for="work_state">Work state / region</label>
+              <input id="work_state" name="work_state" type="text" />
+            </div>
+            <div>
+              <label for="salary_band">Annual salary band (optional)</label>
+              <select id="salary_band" name="salary_band">
+                <option value="">Prefer not to say</option>
+                <option><$50,000</option>
+                <option>$50,000–$69,999</option>
+                <option>$70,000–$89,999</option>
+                <option>$90,000–$109,999</option>
+                <option>$110,000–$129,999</option>
+                <option>$130,000+</option>
+              </select>
+            </div>
+            <div>
+              <label for="start_date">Start date (approx.)</label>
+              <input id="start_date" name="start_date" type="date" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Education (shown only if edu) -->
+        <div id="eduBlock" style="margin-top:1rem; display:none;">
+          <label for="edu_program">Further education program</label>
+          <input id="edu_program" name="edu_program" type="text" placeholder="e.g., PhD in Public Policy at CSU Fullerton" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Alumni Engagement</legend>
+        <div class="grid grid-2">
+          <div>
+            <label for="mentorship">Mentorship interest</label>
+            <select id="mentorship" name="mentorship_interest">
+              <option value="none">Not at this time</option>
+              <option value="mentor">I’m willing to mentor a current student</option>
+              <option value="mentee">I’d like to be mentored by a practitioner/alum</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+          <div>
+            <label for="engage_topics">How could you help current students? (optional)</label>
+            <input id="engage_topics" name="engage_topics" type="text" placeholder="Guest talk, resume reviews, mock interviews, capstone sponsor…" />
+          </div>
+        </div>
+        <div style="margin-top: .75rem;">
+          <label for="updates">Anything else we should know? (optional)</label>
+          <textarea id="updates" name="updates" placeholder="Share news, promotions, awards, or feedback for the program." ></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Consent & Privacy</legend>
+        <p class="notes">Your responses help us meet accreditation requirements and improve the MPA program. Identifying details will not be shared outside the program without your permission. You may request deletion of your data at any time.</p>
+        <label class="row">
+          <input type="checkbox" name="consent" id="consent" required />
+          <span>I consent to the CSUF MPA program using my responses for NASPAA reporting and internal program improvement. <span class="req">*</span></span>
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit">Submit</button>
+        <button type="button" class="secondary" id="saveJson">Save a copy (JSON)</button>
+        <span id="formMsg" role="status" aria-live="polite"></span>
+      </div>
+
+      <!-- spam honeypot -->
+      <p class="sr-only">
+        <label>Leave this empty <input name="_gotcha" /></label>
+      </p>
+    </form>
+
+    <section class="card" style="margin-top:1rem;">
+      <details>
+        <summary>Admin notes: NASPAA roll-up & modality breakdown</summary>
+        <p class="notes">To produce the NASPAA table, aggregate <code>naspaa_status</code> and, when <code>employed</code>, the <code>naspaa_sector</code>, grouped by <code>modality</code> (and <code>campus</code> if needed). Count rows in each sector. Alumni selecting education/military/unemployed map directly to those categories.</p>
+        <ul class="notes">
+          <li><strong>Reporting year:</strong> use graduates from the year prior to the annual survey year.</li>
+          <li><strong>Delivery modality:</strong> On-Campus, Online, Hybrid/HyFlex (as selected above).</li>
+          <li><strong>Optional fields</strong> (employer, salary) are for program improvement only.</li>
+        </ul>
+      </details>
+    </section>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('alumniForm');
+      const statusRadios = form.querySelectorAll('input[name="naspaa_status"]');
+      const sectorBlock = document.getElementById('sectorBlock');
+      const eduBlock = document.getElementById('eduBlock');
+      const sectorSelect = document.getElementById('naspaa_sector');
+      const msg = document.getElementById('formMsg');
+
+      const toggleBlocks = () => {
+        const val = [...statusRadios].find(r => r.checked)?.value;
+        sectorBlock.style.display = (val === 'employed') ? 'block' : 'none';
+        eduBlock.style.display = (val === 'edu') ? 'block' : 'none';
+        // Only require sector if employed
+        sectorSelect.required = (val === 'employed');
+      };
+      statusRadios.forEach(r => r.addEventListener('change', toggleBlocks));
+      toggleBlocks();
+
+      // Optional client-side submit enhancement
+      form.addEventListener('submit', function(e){
+        // For Netlify, native POST is fine; we just show a message
+        msg.textContent = 'Submitting…';
+        msg.className = '';
+      });
+
+      // Allow user to download a JSON copy of their responses
+      document.getElementById('saveJson').addEventListener('click', function(){
+        const data = new FormData(form);
+        const obj = {};
+        for (const [k, v] of data.entries()) {
+          if (k === '_gotcha' && v) { return; } // honeypot trip
+          obj[k] = v;
+        }
+        const blob = new Blob([JSON.stringify(obj, null, 2)], {type: 'application/json'});
+        const a = document.createElement('a');
+        const ts = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+        a.href = URL.createObjectURL(blob);
+        a.download = `mpa-alumni-survey-${ts}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      });
+    })();
+  </script>
+</body>
+</html>
