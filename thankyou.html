@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You - MPA Alumni Survey</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .thank-you-container {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .check-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 2rem;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.5s ease-out;
+    }
+    .check-icon svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      animation: drawCheck 0.5s ease-out 0.3s both;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes drawCheck {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+    .thank-you-message h1 {
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .thank-you-message p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .back-button {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo-top">
+      <img src="CalStateFullerton-reversed-orange-R.png" alt="California State University, Fullerton" />
+    </div>
+    
+    <div class="card thank-you-container">
+      <div class="check-icon">
+        <svg viewBox="0 0 52 52">
+          <path d="M14 27l8 8 16-16" stroke-dasharray="100" />
+        </svg>
+      </div>
+      
+      <div class="thank-you-message">
+        <h1>Thank You!</h1>
+        <p>
+          Your survey response has been successfully submitted. Your participation helps us improve the MPA program 
+          and strengthen our alumni network.
+        </p>
+        <p>
+          We appreciate you taking the time to share your experience and career information with us. 
+          If you have any questions, please contact the MPA Program office.
+        </p>
+        <button type="button" class="btn back-button" onclick="window.location.href='mpa_alumni_placement_engagement_survey_html.html'">
+          Return to Survey
+        </button>
+      </div>
+    </div>
+    
+    <div class="logo-bottom">
+      <img src="PUBLIC-ADMINISTRATION-reversed-orange.png" alt="Public Administration Program" />
+    </div>
+  </div>
+</body>
+</html>

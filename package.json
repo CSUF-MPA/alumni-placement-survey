@@ -1,0 +1,26 @@
+{
+  "name": "alumni-placement-survey",
+  "version": "1.0.0",
+  "description": "This repository hosts the **CSUF MPA Alumni Placement & Engagement Survey**, a lightweight, responsive HTML form for collecting NASPAA-required post-graduation employment data and alumni engagement information.",
+  "main": "script.js",
+  "scripts": {
+    "test:a11y": "pa11y --standard WCAG2AA mpa_alumni_placement_engagement_survey_html.html && pa11y --standard WCAG2AA thankyou.html",
+    "test": "npm run test:a11y"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadams-AU/alumni-placement-survey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dadams-AU/alumni-placement-survey/issues"
+  },
+  "homepage": "https://github.com/dadams-AU/alumni-placement-survey#readme",
+  "devDependencies": {
+    "axe-core": "^4.11.0",
+    "pa11y": "^9.0.1"
+  }
+}
