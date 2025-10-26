@@ -156,7 +156,7 @@ See [ACCESSIBILITY.md](ACCESSIBILITY.md) for detailed compliance report.
 - Data retention follows university policies
 - Alumni may request data deletion at any time
 
-**Contact:** [dadams@fullerton.edu](mailto:dadams@fullerton.edu)
+**Contact:** [dpadams@fullerton.edu](mailto:dpadams@fullerton.edu)
 
 ---
 
