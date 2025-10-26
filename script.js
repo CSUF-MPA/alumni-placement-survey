@@ -1,4 +1,21 @@
 (function(){
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  
+  // Check for saved theme preference or default to light mode
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', currentTheme);
+  
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Form functionality
   const form = document.getElementById('alumniForm');
   const statusRadios = form.querySelectorAll('input[name="naspaa_status"]');
   const sectorBlock = document.getElementById('sectorBlock');

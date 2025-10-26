@@ -1,16 +1,41 @@
 :root {
+  /* CSUF Light Mode Colors */
+  --bg: #F5F5F5;
+  --card: #FFFFFF;
+  --text: #1A2029;
+  --muted: #5A6C7D;
+  --brand: #00274C;
+  --brand-2: #0F3F8C;
+  --good: #10b981;
+  --warn: #FF7900;
+  --bad: #ef4444;
+  --border: #D1D5DB;
+  --focus: #0F3F8C;
+  --input-bg: #FFFFFF;
+  --gradient-start: #00274C;
+  --gradient-end: #F5F5F5;
+  --logo-top: url('CalStateFullerton-color-R.png');
+  --logo-bottom: url('PUBLIC-ADMINISTRATION-color.png');
+}
+
+[data-theme="dark"] {
   /* CSUF Dark Mode Colors */
-  --bg: #1A2029; /* Dark Mode Background */
-  --card: #252A30; /* Dark Mode Gray */
-  --text: #EBEBEB; /* Dark Mode Text */
-  --muted: #99B3B9; /* Dark Mode Sky Blue */
-  --brand: #1A2F48; /* Dark Mode Titan Blue */
-  --brand-2: #0F3F8C; /* Medium Blue */
-  --good: #10b981; /* emerald-500 - keep for success */
-  --warn: #FF7900; /* Titan Orange */
-  --bad: #ef4444; /* red-500 - keep for errors */
-  --border: #3C4148; /* Dark Mode Beige */
-  --focus: #99B3B9; /* Dark Mode Sky Blue */
+  --bg: #1A2029;
+  --card: #252A30;
+  --text: #EBEBEB;
+  --muted: #99B3B9;
+  --brand: #1A2F48;
+  --brand-2: #0F3F8C;
+  --good: #10b981;
+  --warn: #FF7900;
+  --bad: #ef4444;
+  --border: #3C4148;
+  --focus: #99B3B9;
+  --input-bg: #00244E;
+  --gradient-start: #00244E;
+  --gradient-end: #1A2029;
+  --logo-top: url('CalStateFullerton-reversed-orange-R.png');
+  --logo-bottom: url('PUBLIC-ADMINISTRATION-reversed-orange.png');
 }
 
 html, body { 
@@ -20,9 +45,10 @@ html, body {
 body {
   margin: 0; 
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background: linear-gradient(180deg, #00244E 0%, var(--bg) 30%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--gradient-start) 0%, var(--bg) 30%, var(--bg) 100%);
   background-attachment: fixed;
   color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .wrap { 
@@ -39,7 +65,8 @@ body {
 .logo-top img { 
   max-width: 300px; 
   width: 100%; 
-  height: auto; 
+  height: auto;
+  content: var(--logo-top);
 }
 
 .logo-bottom { 
@@ -53,7 +80,8 @@ body {
   max-width: 200px; 
   width: 100%; 
   height: auto; 
-  opacity: 0.9; 
+  opacity: 0.9;
+  content: var(--logo-bottom);
 }
 
 header { 
@@ -76,7 +104,13 @@ h1 {
   border: 1px solid var(--border); 
   box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); 
   border-radius: 14px; 
-  padding: 1.25rem; 
+  padding: 1.25rem;
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="light"] .card {
+  background: var(--card);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.5);
 }
 
 .grid { 
@@ -93,7 +127,8 @@ h1 {
 fieldset { 
   border: 1px solid var(--border); 
   border-radius: 12px; 
-  padding: 1rem; 
+  padding: 1rem;
+  transition: border 0.3s ease;
 }
 
 legend { 
@@ -126,9 +161,10 @@ input[type="date"] {
   padding: .7rem .8rem; 
   border-radius: 10px; 
   border: 1px solid var(--border); 
-  background: #00244E; 
+  background: var(--input-bg); 
   color: var(--text); 
   box-sizing: border-box;
+  transition: background 0.3s ease, border 0.3s ease;
 }
 
 textarea { 
@@ -156,7 +192,8 @@ textarea {
   border-radius: 999px; 
   border: 1px solid var(--border); 
   color: var(--muted); 
-  font-size: .85rem; 
+  font-size: .85rem;
+  transition: border 0.3s ease, color 0.3s ease;
 }
 
 .divider { 
@@ -190,10 +227,52 @@ button, .btn {
 }
 
 button.secondary { 
-  background: #00244E; 
+  background: var(--card); 
   border: 1px solid var(--border); 
   color: var(--text); 
   box-shadow: none; 
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text);
+}
+
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none;
 }
 
 .sr-only { 
