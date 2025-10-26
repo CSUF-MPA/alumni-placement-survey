@@ -51,7 +51,7 @@ Responses feed into the annual **Public Administration Program Assessment** and 
 
 3. **Files to deploy:**
    ```
-   mpa_alumni_placement_engagement_survey_html.html
+   index.html
    thankyou.html
    styles.css
    script.js
@@ -80,7 +80,7 @@ Responses feed into the annual **Public Administration Program Assessment** and 
 
 ```
 alumni-placement-survey/
-├── mpa_alumni_placement_engagement_survey_html.html  # Main survey form
+├── index.html  # Main survey form
 ├── thankyou.html                                      # Custom confirmation page
 ├── styles.css                                         # CSUF-branded styles
 ├── script.js                                          # Form logic & submission
